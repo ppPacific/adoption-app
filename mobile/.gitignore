@@ -1,6 +1,7 @@
-Doggie/node_modules/
-server/node_modules/
-mobile/node_modules/
+# Learn more https://docs.github.com/en/get-started/getting-started-with-git/ignoring-files
+
+# dependencies
+node_modules/
 
 # Expo
 .expo/
@@ -30,16 +31,13 @@ yarn-error.*
 *.pem
 
 # local env files
-Doggie/.env*.local
-server/.env*.local
-mobile/.env*.local
+.env*.local
+
 # typescript
 *.tsbuildinfo
 
 app-example
 
 # generated native folders
-Doggie/ios
-Doggie/android
-mobile/ios
-mobile/android
+/ios
+/android
