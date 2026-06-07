@@ -1,12 +1,10 @@
 import express from "express";
-import dotenv from "dotenv";
+import { ENV } from "./config/env.js";
 // import { initDB } from "./config/db.js";
 // import rateLimiter from "./middleware/rateLimiter.js";
 
-// import transactionsRoute from "./routes/transactionsRoute.js";
 // import job from "./config/cron.js";
 
-dotenv.config();
 
 const app = express();
 
@@ -22,13 +20,11 @@ const app = express();
 //   next();
 // });
 
-const PORT = process.env.PORT || 5001;
+const PORT = ENV.PORT || 5001;
 
-// app.get("/api/health", (req, res) => {
-//   res.status(200).json({ status: "ok" });
-// });
-
-// app.use("/api/transactions", transactionsRoute);
+app.get("/api/health", (req, res) => {
+  res.status(200).json({ success: true });
+});
 
 // initDB().then(() => {
   app.listen(PORT, () => {
