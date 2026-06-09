@@ -1,6 +1,7 @@
 import express from "express";
 import { ENV } from "./config/env.js";
-// import { initDB } from "./config/db.js";
+import { db } from "./config/db.js";
+import { dogs } from "./db/schema.js";
 // import rateLimiter from "./middleware/rateLimiter.js";
 
 // import job from "./config/cron.js";
@@ -12,7 +13,7 @@ const app = express();
 
 // // middleware
 // app.use(rateLimiter);
-// app.use(express.json());
+app.use(express.json()); //so to destructure from req body
 
 // our custom simple middleware
 // app.use((req, res, next) => {
@@ -25,7 +26,37 @@ const PORT = ENV.PORT || 5001;
 app.get("/api/health", (req, res) => {
   res.status(200).json({ success: true });
 });
+app.post("/api/dog", async (req, res) => {
+  try {
+    const { name, slug, sex, breed, ageMonths,size,color,description,searchTags,adoptionStatus,kennelLocation, featured } = req.body;
 
+    if (!name || !slug || !sex || !breed ||!description ||!searchTags ||!adoptionStatus ) {
+      return res.status(400).json({ error: "Missing required fields" });
+    }
+
+    const newDog = await db
+        .insert(dogs)
+        .values({
+          name,
+          slug,
+          sex,
+          breed,
+          ageMonths,
+          size,
+          color,
+          description,
+          searchTags,
+          adoptionStatus,
+          kennelLocation, featured
+        })
+        .returning();
+
+    res.status(201).json(newDog[0]);
+  } catch (error) {
+    console.log("Error adding dog", error);
+    res.status(500).json({ error: "Something went wrong" });
+  }
+});
 // initDB().then(() => {
   app.listen(PORT, () => {
     console.log("Server is up and running on PORT:", PORT)
