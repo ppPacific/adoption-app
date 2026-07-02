@@ -8,8 +8,8 @@ const SafeAreaView = styled(RNSafeAreaView)//enable classname support
 export default function Index() {
   return (
       <SafeAreaView className="flex-1 bg-background p-5">
-          <Text className="text-xl font-bold text-blue-500">
-              Welcome to Nativewind!
+          <Text className="text-5xl font-sans-extrabold text-blue-500">
+              Welcome Home!
           </Text>
           <Link href={'/'} className={`mt-4 rounded bg-primary text-white p-4`}>to home</Link>
           <Link href={'/(auth)/sign-in'} className={`mt-4 rounded bg-primary text-white p-4`}>to sign in</Link>
