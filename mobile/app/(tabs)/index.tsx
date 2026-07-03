@@ -11,9 +11,9 @@ export default function Index() {
           <Text className="text-5xl font-sans-extrabold text-blue-500">
               Welcome Home!
           </Text>
-          <Link href={'/'} className={`mt-4 rounded bg-primary text-white p-4`}>to home</Link>
-          <Link href={'/(auth)/sign-in'} className={`mt-4 rounded bg-primary text-white p-4`}>to sign in</Link>
-          <Link href={'/(auth)/sign-up'} className={`mt-4 rounded bg-primary text-white p-4`}>to sign up</Link>
+          <Link href={'/'} className={`mt-4 font-sans-bold rounded bg-primary text-white p-4`}>to home</Link>
+          <Link href={'/(auth)/sign-in'} className={`mt-4 font-sans-bold rounded bg-primary text-white p-4`}>to sign in</Link>
+          <Link href={'/(auth)/sign-up'} className={`mt-4 font-sans-bold rounded bg-primary text-white p-4`}>to sign up</Link>
 
           <Link href={'/doggie/Karin'} className={`mt-4 rounded bg-primary text-white p-4`}>Karin</Link>
           <Link href={{
